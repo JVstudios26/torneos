@@ -72,9 +72,9 @@ export function goalCheck(s,m,home,away){
 
 // Acumulados por jugador (clave: nombre sin distinguir mayúsculas + club, como COUNTIFS) y tops de 30
 export function rankings(s){
-  const P=new Map();
-  s.events.forEach((e,i)=>{ if(!e.player||!e.team)return; const k=e.team+'|'+e.player.trim().toLowerCase();
-    if(!P.has(k))P.set(k,{player:e.player.trim(),team:e.team,first:i,g:0,a:0,y:0,r:0,og:0});
+   const P=new Map(),ow=Object.fromEntries(s.teams.map(t=>[t.id,t.owner]));
+  s.events.forEach((e,i)=>{ if(!e.player||ow[e.team]==null)return; const k=ow[e.team]+'|'+e.player.trim().toLowerCase();
+    if(!P.has(k))P.set(k,{player:e.player.trim(),owner:ow[e.team],first:i,g:0,a:0,y:0,r:0,og:0});
     const p=P.get(k); if(e.type==='Gol')p.g++; if(e.type==='Asistencia')p.a++; if(e.type==='Amarilla')p.y++; if(e.type==='Roja')p.r++; if(e.type==='Autogol')p.og++; });
   const all=[...P.values()].map(p=>({...p,pts:p.y+3*p.r}));
   const top=(f,sort,val)=>{const l=all.filter(f).sort((x,y)=>sort(x,y)||x.first-y.first).slice(0,30);return l.map(p=>({...p,pos:l.filter(q=>val(q)>val(p)).length+1}));};
