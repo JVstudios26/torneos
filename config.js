@@ -1,2 +1,2 @@
 // Copia como config.js y rellena con TUS valores (Supabase > Project Settings > API). Usa solo la clave "anon/public", NUNCA la service_role.
-export default { SUPABASE_URL: 'https://tbyjtxqogxhurilkgdio.supabase.co/rest/v1/', SUPABASE_ANON_KEY: 'sb_publishable_mek4qC8XoEJnBKmaJ-1sOg_nNlDxOPJ' };
+export default { SUPABASE_URL: 'https://tbyjtxqogxhurilkgdio.supabase.co', SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRieWp0eHFvZ3hodXJpbGtnZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwMjAxMDMsImV4cCI6MjEwODU5NjEwM30.M81qNp74a4kyCgj-GViUvK8MOwBHuSZchqmuiy79C5c' };
